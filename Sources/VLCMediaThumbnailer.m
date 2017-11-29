@@ -219,9 +219,9 @@ static void display(void *opaque, void *picture)
     if (snapshotPosition == kSnapshotPosition) {
         int length = _media.length.intValue;
         if (length < kStandardStartTime) {
-            VKLog(@"short file detected");
+            VKLog(VKLogLevelInfo, @"short file detected");
             if (length > 1000) {
-                VKLog(@"attempting seek to %is", (length * 25 / 100000));
+                VKLog(VKLogLevelInfo, @"attempting seek to %is", (length * 25 / 100000));
                 libvlc_media_add_option([_media libVLCMediaDescriptor], [[NSString stringWithFormat:@"start-time=%i", (length * 25 / 100000)] UTF8String]);
             }
         } else
@@ -232,7 +232,7 @@ static void display(void *opaque, void *picture)
     NSURL *url = _media.url;
     NSTimeInterval timeoutDuration = 10;
     if (![url.scheme isEqualToString:@"file"]) {
-        VKLog(@"media is remote, will wait longer");
+        VKLog(VKLogLevelInfo, @"media is remote, will wait longer");
         timeoutDuration = 45;
     }
 
@@ -242,7 +242,7 @@ static void display(void *opaque, void *picture)
 
 - (void)mediaParsingTimedOut
 {
-    VKLog(@"WARNING: media thumbnailer media parsing timed out");
+    VKLog(VKLogLevelWarning, @"WARNING: media thumbnailer media parsing timed out");
     [_media removeObserver:self forKeyPath:@"parsedStatus"];
 
     [self startFetchingThumbnail];
@@ -356,7 +356,7 @@ static void display(void *opaque, void *picture)
 
 - (void)mediaThumbnailingTimedOut
 {
-    VKLog(@"WARNING: media thumbnailer media thumbnailing timed out");
+    VKLog(VKLogLevelWarning, @"WARNING: media thumbnailer media thumbnailing timed out");
     [self endThumbnailing];
 
     // Call delegate

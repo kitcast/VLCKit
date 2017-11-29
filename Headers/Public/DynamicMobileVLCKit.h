@@ -41,7 +41,9 @@ FOUNDATION_EXPORT const unsigned char DynamicMobileVLCKitVersionString[];
 #import <DynamicMobileVLCKit/VLCMediaThumbnailer.h>
 #import <DynamicMobileVLCKit/VLCTime.h>
 #import <DynamicMobileVLCKit/VLCDialogProvider.h>
+#import <DynamicMobileVLCKit/VLCLogging.h>
 
+@class VLCLogging;
 @class VLCMedia;
 @class VLCMediaLibrary;
 @class VLCMediaList;

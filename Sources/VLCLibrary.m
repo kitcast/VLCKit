@@ -91,6 +91,7 @@ static VLCLibrary * sharedLibrary = nil;
     _instance = libvlc_new(count, lib_vlc_params);
 
     NSAssert(_instance, @"libvlc failed to initialize");
+    libvlc_log_set(_instance, HandleMessage, NULL);
 }
 
 - (NSArray *)_defaultOptions
@@ -131,18 +132,6 @@ static VLCLibrary * sharedLibrary = nil;
 #endif
 
     return vlcParams;
-}
-
-- (void)setDebugLogging:(BOOL)debugLogging
-{
-    if (!_instance)
-        return;
-
-    if (debugLogging) {
-        libvlc_log_set(_instance, HandleMessage, (__bridge void *)(self));
-    } else {
-        libvlc_log_unset(_instance);
-    }
 }
 
 - (NSString *)version
@@ -186,11 +175,6 @@ static void HandleMessage(void *data,
                           const char *fmt,
                           va_list args)
 {
-    VLCLibrary *libraryInstance = (__bridge VLCLibrary *)data;
-
-    if (level < libraryInstance.debugLoggingLevel)
-        return;
-
     char *str;
     if (vasprintf(&str, fmt, args) == -1) {
         if (str)
@@ -202,7 +186,7 @@ static void HandleMessage(void *data,
     if (str == NULL)
         return;
 
-    VKLog(@"%s", str);
+    VKLog(level, @"%s", str);
     free(str);
     str = NULL;
 }

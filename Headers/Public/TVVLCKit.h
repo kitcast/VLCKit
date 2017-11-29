@@ -31,7 +31,9 @@
 #import <TVVLCKit/VLCMediaThumbnailer.h>
 #import <TVVLCKit/VLCTime.h>
 #import <TVVLCKit/VLCDialogProvider.h>
+#import <TVVLCKit/VLCLogging.h>
 
+@class VLCLogging;
 @class VLCMedia;
 @class VLCMediaLibrary;
 @class VLCMediaList;

@@ -133,7 +133,7 @@ static void cancelCallback(void *p_data,
 {
     @autoreleasepool {
         // FIXME: the saddest NO-OP
-        VKLog(@"%s: %i", __PRETTY_FUNCTION__, (int)p_id);
+        VKLog(VKLogLevelDebug, @"%s: %i", __PRETTY_FUNCTION__, (int)p_id);
     }
 }
 
@@ -245,12 +245,12 @@ static void updateProgressCallback(void *p_data,
 
 - (void)displayProgressDialog:(NSArray * _Nonnull)dialogData
 {
-    VKLog(@"%s: %@", __PRETTY_FUNCTION__, dialogData);
+    VKLog(VKLogLevelDebug, @"%s: %@", __PRETTY_FUNCTION__, dialogData);
 }
 
 - (void)updateDisplayedProgressDialog:(NSArray * _Nonnull)dialogData
 {
-    VKLog(@"%s: %@", __PRETTY_FUNCTION__, dialogData);
+    VKLog(VKLogLevelDebug, @"%s: %@", __PRETTY_FUNCTION__, dialogData);
 }
 
 @end

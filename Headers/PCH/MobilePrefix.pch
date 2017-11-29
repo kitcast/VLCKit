@@ -8,9 +8,6 @@
 #endif
 #import <vlc/vlc.h>
 #import "VLCHelperCode.h"
+#import "VLCLogging.h"
 
-#ifndef NDEBUG
-#define VKLog(format, ...) NSLog(format, ## __VA_ARGS__)
-#else
-#define VKLog(format, ...)
-#endif
+#define VKLog(level, format, ...) VLCLogging.logger(level, [NSString stringWithFormat: format, ## __VA_ARGS__])

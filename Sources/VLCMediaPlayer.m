@@ -140,7 +140,7 @@ static void HandleMediaInstanceStateChanged(const libvlc_event_t * event, void *
     else if (event->type == libvlc_MediaPlayerEndReached)
         newState = VLCMediaPlayerStateEnded;
     else {
-        VKLog(@"%s: Unknown event", __FUNCTION__);
+        VKLog(VKLogLevelWarning, @"%s: Unknown event", __FUNCTION__);
         return;
     }
 
@@ -1301,10 +1301,10 @@ static void HandleMediaPlayerSnapshot(const libvlc_event_t * event, void * self)
         // it will change depending on the media descriptor provided to the media
         // instance
         if (options && options.count > 0) {
-            VKLog(@"creating player instance with private library as options were given");
+            VKLog(VKLogLevelInfo, @"creating player instance with private library as options were given");
             _privateLibrary = [[VLCLibrary alloc] initWithOptions:options];
         } else {
-            VKLog(@"creating player instance using shared library");
+            VKLog(VKLogLevelInfo, @"creating player instance using shared library");
             _privateLibrary = [VLCLibrary sharedLibrary];
         }
         libvlc_retain([_privateLibrary instance]);

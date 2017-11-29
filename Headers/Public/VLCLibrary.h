@@ -26,6 +26,7 @@
 #import "VLCAudio.h"
 #import "VLCMediaList.h"
 #import "VLCMedia.h"
+#import "VLCLogging.h"
 
 @class VLCAudio;
 
@@ -53,14 +54,6 @@
  * \return the individual library instance
  */
  - (instancetype)initWithOptions:(NSArray*)options;
-
-/**
- * enables/disables debug logging
- * param: debugLogging BOOL value to enable/disable
- * \note we will always log using NSLog
- * \return debug logging state
- */
-@property (readwrite, nonatomic) BOOL debugLogging;
 
 /**
  * gets/sets the debug logging level

@@ -104,7 +104,7 @@ NSString *const VLCMediaDiscovererCategory = @"VLCMediaDiscovererCategory";
                                             [aServiceName UTF8String]);
 
         if (_mdis == NULL) {
-            VKLog(@"media discovery initialization failed, maybe no such module?");
+            VKLog(VKLogLevelError, @"media discovery initialization failed, maybe no such module?");
             return NULL;
         }
     }
@@ -128,7 +128,7 @@ NSString *const VLCMediaDiscovererCategory = @"VLCMediaDiscovererCategory";
 {
     int returnValue = libvlc_media_discoverer_start(_mdis);
     if (returnValue == -1) {
-        VKLog(@"media discovery start failed");
+        VKLog(VKLogLevelError, @"media discovery start failed");
         return returnValue;
     }
 

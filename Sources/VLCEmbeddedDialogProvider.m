@@ -288,12 +288,12 @@ static void updateProgressCallback(void *p_data,
 
 - (void)displayProgressDialog:(NSArray * _Nonnull)dialogData
 {
-    VKLog(@"%s: %@", __PRETTY_FUNCTION__, dialogData);
+    VKLog(VKLogLevelDebug, @"%s: %@", __PRETTY_FUNCTION__, dialogData);
 }
 
 - (void)updateDisplayedProgressDialog:(NSArray * _Nonnull)dialogData
 {
-    VKLog(@"%s: %@", __PRETTY_FUNCTION__, dialogData);
+    VKLog(VKLogLevelDebug, @"%s: %@", __PRETTY_FUNCTION__, dialogData);
 }
 
 @end
